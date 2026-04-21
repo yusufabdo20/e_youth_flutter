@@ -1,4 +1,6 @@
-import 'package:e_youth_flutter1/screens/first_screen.dart';
+import 'package:e_youth_flutter1/screens/bmi/first_screen.dart';
+import 'package:e_youth_flutter1/screens/products_idea/home_screen.dart';
+import 'package:e_youth_flutter1/screens/transfer/transfer_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +19,7 @@ class _EyouthApp extends State<EyouthApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FirstScreen() ,
+      home: TransferScreen() ,
     ) ;
   }
   

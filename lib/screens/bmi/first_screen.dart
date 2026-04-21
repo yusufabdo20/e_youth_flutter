@@ -1,4 +1,5 @@
 
+import 'package:e_youth_flutter1/screens/bmi/result_screen.dart';
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -248,9 +249,15 @@ switch(bmi){
                           child: ElevatedButton(
                             onPressed: (){
                               calcBMI(); 
-                              setState(() {
+                              Navigator.push(context , MaterialPageRoute(builder: (context){
+                                return ResultScreen(
+                                  bmiResult: result,
+                                  bmiCategory: category,
+                                ); 
+                              } )); 
+                              // setState(() {
                                 
-                              });
+                              // });
                             }, child: Text("Calculate"), 
                             
                             style:ElevatedButton.styleFrom(          
