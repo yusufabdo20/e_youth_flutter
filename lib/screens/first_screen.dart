@@ -13,13 +13,50 @@ bool isMale =true ;
 double height = 170 ; 
 int weight = 70 ; 
 int age =20 ; 
-var result = "" ; 
+var result = "" ;
+String category = '';
+void reset(){
+  isMale =true ;
+  height =170 ;
+  weight=70 ; 
+  age = 20 ; 
+  result=""; 
+
+setState(() {
+  
+});
+}
 void calcBMI(){ 
 double hM = height/100 ; 
 double bmi = weight / (hM * hM) ; 
 result = bmi.toStringAsFixed(1) ; 
-
+switch(bmi){
+  case <=17 : 
+ category = "moderate and severe thinness " ; 
+ break ; 
+  case <=18.5 : 
+ category = "under weight" ; 
+ break ; 
+  case >18.5 && <= 24.9 : 
+ category = "Normal" ; 
+ break ; 
+  case >=25 : 
+ category = "Overweight" ; 
+ break ; 
+  case >=30 : 
+ category = "Obesity" ; 
+ break ; 
+ default:
+ category= "NONE" ; 
+ break ; 
 }
+}
+// BMI <17.0: moderate and severe thinness.
+// BMI <18.5: underweight.
+// BMI 18.5–24.9: normal weight.
+// BMI ≥25.0: overweight.
+// BMI ≥30.0: obesity.
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +67,7 @@ result = bmi.toStringAsFixed(1) ;
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Expanded(
-                      flex: 1,
+                    Flexible(
                       child: Row(
                         children: [
                           Expanded(
@@ -128,7 +164,7 @@ result = bmi.toStringAsFixed(1) ;
                     ) , 
                     SizedBox(height: 20,) , 
                     Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: Row(
                             children: [
                               Expanded(
@@ -174,16 +210,39 @@ result = bmi.toStringAsFixed(1) ;
                             ],
                           ),
                     ), 
-                    SizedBox(height: 20,) ,
-                   result.isEmpty ? SizedBox() :  Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.amber, 
-                          borderRadius: BorderRadius.circular(20)
-                        ),
-                        child: Text(result) ,
-                    ) ,
+                    SizedBox(height: 20,) , 
+                    result.isEmpty ?  SizedBox() : 
+                    ElevatedButton(onPressed: (){
+                      reset(); 
+                    }, child: Text("RESET")) , 
+                   result.isEmpty ? SizedBox() :  Expanded(
+                     child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.amber, 
+                            borderRadius: BorderRadius.circular(20)
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text("BMI NUM = " , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold),) , 
+                                  Text(result, style: TextStyle(fontSize: 20 )),
+                                ],
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Category= " , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold),) , 
+                                  Flexible(child: Text(category, style: TextStyle(fontSize: 20 ))),
+                                ],
+                              ),
+                            ],
+                          ) ,
+                      ),
+                   ) ,
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
