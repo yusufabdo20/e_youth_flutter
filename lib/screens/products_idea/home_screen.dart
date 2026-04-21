@@ -22,9 +22,7 @@ final List<String> products =[
           title: Text(products[index]), 
           trailing: Icon(Icons.arrow_forward_ios),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context){
-              return ProductDetailsScreen(prodName:products[index] ,); 
-            })) ;
+            Navigator.pushNamed(context, '/product') ;
           },
         ) ; 
       }),
