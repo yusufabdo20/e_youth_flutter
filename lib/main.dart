@@ -31,6 +31,10 @@ class _EyouthApp extends State<EyouthApp> {
       // darkTheme: noonDarkTheme,
       // home: InstaPayScreen(),
       theme: appThemeLight ,
+      darkTheme: ThemeData(
+        scaffoldBackgroundColor: Colors.black
+      ),
+      themeMode: isDarkMode? ThemeMode.dark  : ThemeMode.light,
       home: TalabatScreen(),
     ) ;
   }

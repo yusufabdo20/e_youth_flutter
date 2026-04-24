@@ -1,9 +1,16 @@
 import 'package:e_youth_flutter1/screens/theme_screen_test/widgets/restaurant_info_card_widget.dart';
+import 'package:e_youth_flutter1/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class TalabatScreen extends StatelessWidget {
+class TalabatScreen extends StatefulWidget {
   const TalabatScreen({super.key});
 
+  @override
+  State<TalabatScreen> createState() => _TalabatScreenState();
+}
+
+class _TalabatScreenState extends State<TalabatScreen> {
+  bool isListView =false ; 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,38 +18,36 @@ class TalabatScreen extends StatelessWidget {
         title:  Text('Talabat Screen'),
       ),
       body:  Center(
-        child: GridView.count(crossAxisCount: 2 , children: [
-          RestaurantInfoCard(
-            name: "TTTTT",
-            description: "ddddddd",
-          ), 
-          RestaurantInfoCard(
-            name: "طلبات مارت",
-            description: "وصف لطلبات مارت",
-          ), 
-         
-          RestaurantInfoCard(
-            name: "duduudud",
-            description: "llfllflfl",
-          ), 
-         
-          RestaurantInfoCard(
-            name: "PPPPPPP",
-            description: "ccncncnc",
-          ), 
-         
-          RestaurantInfoCard(
-            name: "AAAAA",
-            description: "dldlldldld",
-          ), 
-         
-          RestaurantInfoCard(
-            name: "pfppfpfp",
-            description: "kdkkdk",
-          ), 
-         
+        child: Column(
+          children: [
+            Switch(
+              activeThumbColor:Colors.red,
+              thumbIcon :WidgetStateProperty.all(Icon(Icons.trending_up
+              )),
+              value: isListView, onChanged: (value) {
+               setState(() {
+                                isListView =  value;
+                                print(isListView) ; 
+                                print("VALUE : $value"); 
 
-        ],)     ),
+               });
+
+            }),
+            SizedBox(
+              height: 500,
+              child: isListView ? 
+              ListView.builder(itemBuilder:  (context, index) {
+                  return RestaurantInfoCard(name: "ddddd", description: "description") ; 
+                },) : 
+                GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2), 
+                itemBuilder: (context, index) {
+                  return RestaurantInfoCard(name: "ddddd", description: "description") ; 
+                }
+              ),
+            ),
+          ],
+        )     ),
     );
   }
 }

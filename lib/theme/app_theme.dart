@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+  bool isDarkMode = false ;
 
 var appThemeLight= ThemeData(
       colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF6A1B9A)) , 
