@@ -10,13 +10,13 @@ class NoonProductsScreen extends StatelessWidget {
       appBar: AppBar(title: Text("Product screen"),), 
       body: Center(
         child: Card(
-          color: colorScheme.error,
+          color: colorScheme.primary,
           
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Text("Buy now"  , 
             style: TextStyle(
-              color: colorScheme.primary, 
+              color: colorScheme.surface, 
             ),),
           ), 
         ),

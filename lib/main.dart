@@ -3,8 +3,11 @@ import 'package:e_youth_flutter1/screens/products_idea/home_screen.dart';
 import 'package:e_youth_flutter1/screens/products_idea/product_details_screen.dart';
 import 'package:e_youth_flutter1/screens/theme_screen_test/insta_pay_screen.dart';
 import 'package:e_youth_flutter1/screens/theme_screen_test/noon_screen.dart';
+import 'package:e_youth_flutter1/screens/theme_screen_test/talabat_screen.dart';
 import 'package:e_youth_flutter1/screens/theme_screen_test/theme_screen1.dart';
 import 'package:e_youth_flutter1/screens/transfer/transfer_screen.dart';
+import 'package:e_youth_flutter1/theme/app_theme.dart';
+import 'package:e_youth_flutter1/theme/noon_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,21 +26,12 @@ class _EyouthApp extends State<EyouthApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.amber , 
-          brightness: Brightness.light
-        )
-      ), 
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.black , 
-          brightness: Brightness.dark
-        )
-      ),
-      themeMode: ThemeMode.system,
+      // theme: instaPayTheme,
+      // theme: noonLightTheme,
+      // darkTheme: noonDarkTheme,
       // home: InstaPayScreen(),
-      home: NoonProductsScreen(),
+      theme: appThemeLight ,
+      home: TalabatScreen(),
     ) ;
   }
   
